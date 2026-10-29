@@ -54,8 +54,8 @@ On this small test set (18 retrieval questions, 9 answer checks), hybrid retriev
 **Requirements:** Python 3.10+, PostgreSQL with the [pgvector](https://github.com/pgvector/pgvector) extension, and a [Cohere API key](https://dashboard.cohere.com/) (a free trial key works).
 
 ```bash
-git clone <https://github.com/prathampancholi3-byte/SyllabusIQ>
-cd <SyllabusIQ>
+git clone https://github.com/prathampancholi3-byte/SyllabusIQ
+cd SyllabusIQ
 pip install -r requirements.txt
 ```
 
