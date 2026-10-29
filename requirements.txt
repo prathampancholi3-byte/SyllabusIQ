@@ -1,0 +1,10 @@
+cohere
+psycopg[binary]
+psycopg-pool
+pgvector
+pypdf
+pandas
+numpy
+python-dotenv
+matplotlib
+streamlit
