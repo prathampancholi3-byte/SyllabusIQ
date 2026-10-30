@@ -281,6 +281,11 @@ class RAGEngine:
         text = "".join(getattr(p, "text", "") or "" for p in (r.message.content or []) if getattr(p, "type", "text") == "text").strip()
         if not text:
             raise ValueError("EMPTY_RESPONSE")
+        reason = str(getattr(r, "finish_reason", "") or "").upper()
+        if reason and reason not in ("COMPLETE", "STOP_SEQUENCE", "TOOL_CALL"):
+            raise ValueError(f"INCOMPLETE_RESPONSE ({reason})")
+        if not json_mode and len(text.split()) < 8 and re.search(r"\b(\w{3,})\s+\1\b", text, re.I):
+            raise ValueError("DEGENERATE_RESPONSE")
         return text, usage, secs
 
     def llm(self, prompt, system_instruction="", cache=True, model=None, task="other", json_mode=False):
